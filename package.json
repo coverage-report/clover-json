@@ -1,0 +1,42 @@
+{
+  "name": "@cvrg-report/clover-json",
+  "version": "0.1.0",
+  "description": "Parse clover XML coverage reports to JSON, using the same format as lcov-parse",
+  "keywords": [
+    "coverage",
+    "report",
+    "clover",
+    "xml",
+    "cover",
+    "json",
+    "lcov",
+    "parse",
+    "parser",
+    "converter"
+  ],
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "testcover": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec",
+    "publish-please": "publish-please",
+    "prepublishOnly": "publish-please guard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cvrg-report/clover-json.git"
+  },
+  "author": "TobiLG",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cvrg-report/clover-json/issues"
+  },
+  "homepage": "https://github.com/cvrg-report/clover-json",
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "mocha": "^5.0.1",
+    "publish-please": "^2.3.1"
+  },
+  "dependencies": {
+    "xml2js": "^0.4.19"
+  }
+}
