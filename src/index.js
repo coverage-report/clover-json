@@ -26,23 +26,25 @@ var unpackage = function (projects) {
         var methodStats = [],
             lineStats = [];
 
-        c.lines.forEach(function (l) {
-            if (l.$.type === "method") {
-                methodStats.push({
-                    name: l.$.name,
-                    line: Number(l.$.num),
-                    hit: Number(l.$.count)
-                });
-            }
-        });
-        c.lines.forEach(function (l) {
-            if (l.$.type !== "method") {
-                lineStats.push({
-                    line: Number(l.$.num),
-                    hit: Number(l.$.count)
-                });
-            }
-        });
+        if(c.lines !== undefined) {
+            c.lines.forEach(function (l) {
+                if (l.$.type === "method") {
+                    methodStats.push({
+                        name: l.$.name,
+                        line: Number(l.$.num),
+                        hit: Number(l.$.count)
+                    });
+                }
+            });
+            c.lines.forEach(function (l) {
+                if (l.$.type !== "method") {
+                    lineStats.push({
+                        line: Number(l.$.num),
+                        hit: Number(l.$.count)
+                    });
+                }
+            });
+        }
 
         var classCov = {
             title: c.name,
