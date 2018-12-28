@@ -1,6 +1,6 @@
 {
   "name": "@cvrg-report/clover-json",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Parse clover XML coverage reports to JSON, using the same format as lcov-parse",
   "keywords": [
     "coverage",
@@ -23,14 +23,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cvrg-report/clover-json.git"
+    "url": "https://github.com/coverage-report/clover-json.git"
   },
   "author": "TobiLG",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cvrg-report/clover-json/issues"
+    "url": "https://github.com/coverage-report/clover-json/issues"
   },
-  "homepage": "https://github.com/cvrg-report/clover-json",
+  "homepage": "https://github.com/coverage-report/clover-json",
   "devDependencies": {
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
