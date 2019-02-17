@@ -1,4 +1,5 @@
 .nycoutput/
+.idea/
 test/
 .publishrc
 .travis.yml
