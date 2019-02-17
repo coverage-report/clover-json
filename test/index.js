@@ -8,7 +8,7 @@ describe("Check if it can parse a clover file", function () {
 
     it("should parse a normal file", function (done) {
 
-        var filePath = path.join(__dirname, "assets", "clover.xml");
+        var filePath = path.join(__dirname, "assets", "clover1.xml");
 
         parse.parseFile(filePath).then(function (result) {
             assert.equal(result.length, 3);
@@ -22,6 +22,7 @@ describe("Check if it can parse a clover file", function () {
             assert.equal(result[0].lines.details[0].hit, 2);
             done();
         }).catch(function (err) {
+            console.log(err)
             assert.equal(err, null);
             done();
         });
@@ -30,7 +31,7 @@ describe("Check if it can parse a clover file", function () {
 
     it("should parse a second file", function (done) {
 
-        var filePath = path.join(__dirname, "assets", "clover1.xml");
+        var filePath = path.join(__dirname, "assets", "clover2.xml");
 
         parse.parseFile(filePath).then(function (result) {
             assert.equal(result.length, 1);
@@ -56,6 +57,24 @@ describe("Check if it can parse a clover file", function () {
             assert.equal(result[0].functions.hit, 0);
             assert.equal(result[0].lines.found, 0);
             assert.equal(result[0].lines.hit, 0);
+            done();
+        }).catch(function (err) {
+            assert.equal(err, null);
+            done();
+        });
+
+    });
+
+    it("should parse a file without a package property", function (done) {
+
+        var filePath = path.join(__dirname, "assets", "clover-without-package.xml");
+
+        parse.parseFile(filePath).then(function (result) {
+            assert.equal(result.length, 4);
+            assert.equal(result[0].functions.found, 0);
+            assert.equal(result[0].functions.hit, 0);
+            assert.equal(result[0].lines.found, 1);
+            assert.equal(result[0].lines.hit, 1);
             done();
         }).catch(function (err) {
             assert.equal(err, null);

@@ -8,11 +8,23 @@ var parse = {};
 var classDetailsFromProjects = function (projects) {
     var classDetails = [];
     projects.forEach(function (projectObj) {
-        projectObj["package"].forEach(function (packageObj) {
-            packageObj.file.forEach(function (fileObj) {
-                fileObj["class"].forEach(function(classObj) {
-                    classDetails = classDetails.concat({ name: classObj.$.name, metrics: classObj.metrics[0], fileName: fileObj.$.name, fileMetrics: fileObj.metrics[0], lines: fileObj.line ,packageName: packageObj.$.name });
-                });
+        var coverageData = null;
+        var packageName = null;
+        if (projectObj.hasOwnProperty("package")) {
+            coverageData = projectObj.package;
+        } else {
+            coverageData = [projectObj];
+        }
+        coverageData.forEach(function (data) {
+            if (data.hasOwnProperty("$") && data.$.hasOwnProperty("name")) packageName = data.$.name;
+            data.file.forEach(function (fileObj) {
+                if (fileObj.hasOwnProperty("class")) {
+                    fileObj["class"].forEach(function(classObj) {
+                        classDetails = classDetails.concat({ name: classObj.$.name, metrics: classObj.metrics[0], fileName: fileObj.$.name, fileMetrics: fileObj.metrics[0], lines: fileObj.line, packageName: packageName });
+                    });
+                } else {
+                    classDetails = classDetails.concat({ name: null, metrics: null, fileName: fileObj.$.name, fileMetrics: fileObj.metrics[0], lines: fileObj.line, packageName: packageName });
+                }
             });
         });
     });

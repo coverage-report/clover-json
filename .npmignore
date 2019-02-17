@@ -1,0 +1,4 @@
+.nycoutput/
+test/
+.publishrc
+.travis.yml
