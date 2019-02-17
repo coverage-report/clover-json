@@ -1,4 +1,4 @@
-.nycoutput/
+.nyc_output/
 .idea/
 test/
 .publishrc
