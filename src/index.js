@@ -7,26 +7,33 @@ var parse = {};
 
 var classDetailsFromProjects = function (projects) {
     var classDetails = [];
-    projects.forEach(function (projectObj) {
-        var coverageData = null;
-        var packageName = null;
-        if (projectObj.hasOwnProperty("package")) {
-            coverageData = projectObj.package;
-        } else {
-            coverageData = [projectObj];
-        }
-        coverageData.forEach(function (data) {
-            if (data.hasOwnProperty("$") && data.$.hasOwnProperty("name")) packageName = data.$.name;
-            data.file.forEach(function (fileObj) {
-                if (fileObj.hasOwnProperty("class")) {
-                    fileObj["class"].forEach(function(classObj) {
-                        classDetails = classDetails.concat({ name: classObj.$.name, metrics: classObj.metrics[0], fileName: fileObj.$.name, fileMetrics: fileObj.metrics[0], lines: fileObj.line, packageName: packageName });
-                    });
-                } else {
-                    classDetails = classDetails.concat({ name: null, metrics: null, fileName: fileObj.$.name, fileMetrics: fileObj.metrics[0], lines: fileObj.line, packageName: packageName });
-                }
+    var packageName = null;
+
+    var parseFile = function (fileObj, packageName) {
+        if (fileObj.hasOwnProperty("class")) {
+            fileObj["class"].forEach(function(classObj) {
+                classDetails = classDetails.concat({ name: classObj.$.name, metrics: classObj.metrics[0], fileName: fileObj.$.name, fileMetrics: fileObj.metrics[0], lines: fileObj.line, packageName: packageName });
             });
-        });
+        } else {
+            classDetails = classDetails.concat({ name: null, metrics: null, fileName: fileObj.$.name, fileMetrics: fileObj.metrics[0], lines: fileObj.line, packageName: packageName });
+        }
+    }
+
+    projects.forEach(function (projectObj) {
+        if (projectObj.hasOwnProperty("package")) {
+            projectObj.package.forEach(function (data) {
+                if (data.hasOwnProperty("$") && data.$.hasOwnProperty("name")) {
+                    packageName = data.$.name;
+                } else {
+                    packageName = null;
+                }
+                data.file.forEach(parseFile);
+            });
+        }
+        if (projectObj.hasOwnProperty("file")) {
+            packageName = null;
+            projectObj.file.forEach(parseFile);
+        }
     });
     return classDetails;
 };
