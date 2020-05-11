@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1320170507">
+    <project timestamp="1320170507">
+        <package name="hello.world">
+            <file name="/app/Models/Scenario.php">
+            <class name="App\Models\Scenario" namespace="App\Models">
+                <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+            </class>
+            <metrics loc="10" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+            </file>
+            <metrics files="1" loc="0" ncloc="0" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </package>
+        <file name="/app/loose/main3.php">
+            <class name="NonNamespaced" namespace="global">
+              <metrics complexity="3" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="3" elements="7" coveredelements="5"/>
+            </class>
+            <line num="3" type="stmt" count="0"/>
+            <line num="9" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+            <line num="11" type="stmt" count="1"/>
+            <line num="12" type="stmt" count="1"/>
+            <line num="14" type="method" name="covered" visibility="public" complexity="1" crap="1" count="1"/>
+            <line num="16" type="stmt" count="1"/>
+            <line num="19" type="method" name="notCovered" visibility="public" complexity="1" crap="2" count="0"/>
+            <line num="21" type="stmt" count="0"/>
+            <metrics loc="24" ncloc="24" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="3" elements="8" coveredelements="5"/>
+        </file>
+    </project>
+</coverage>

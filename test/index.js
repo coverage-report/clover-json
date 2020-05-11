@@ -82,5 +82,28 @@ describe("Check if it can parse a clover file", function () {
         });
 
     });
+    
+    it("should parse a file with both packaged and non-packaged classes", function (done) {
+
+        var filePath = path.join(__dirname, "assets", "clover-mixed-package.xml");
+
+        parse.parseFile(filePath).then(function (result) {
+            assert.equal(result.length, 2);
+            assert.equal(result[0].functions.found, 0);
+            assert.equal(result[0].functions.hit, 0);
+            assert.equal(result[0].lines.found, 0);
+            assert.equal(result[0].lines.hit, 0);
+
+            assert.equal(result[1].functions.found, 3);
+            assert.equal(result[1].functions.hit, 2);
+            assert.equal(result[1].lines.found, 5);
+            assert.equal(result[1].lines.hit, 3);
+            done();
+        }).catch(function (err) {
+            assert.equal(err, null);
+            done();
+        });
+
+    });
 
 });
