@@ -1,6 +1,6 @@
 {
   "name": "@cvrg-report/clover-json",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Parse clover XML coverage reports to JSON, using the same format as lcov-parse",
   "keywords": [
     "coverage",
