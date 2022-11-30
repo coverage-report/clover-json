@@ -1,6 +1,6 @@
 {
   "name": "@cvrg-report/clover-json",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Parse clover XML coverage reports to JSON, using the same format as lcov-parse",
   "keywords": [
     "coverage",
@@ -30,8 +30,8 @@
   },
   "homepage": "https://github.com/coverage-report/clover-json",
   "devDependencies": {
-    "mocha": "^7.1.2",
-    "nyc": "^15.0.1"
+    "mocha": "^10.1.0",
+    "nyc": "^15.1.0"
   },
   "dependencies": {
     "xml2js": "^0.4.23"
